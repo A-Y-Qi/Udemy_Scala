@@ -111,17 +111,11 @@ object OOPExercise extends App {
   println(list2OfIntegers.toString)
   println(list2OfStrings.toString)
 
-  println(list2OfIntegers.map(new MyTransformer[Int,Int] {
-  override def transform(elem: Int): Int = elem*2
-  }).toString)
+  println(list2OfIntegers.map(elem=>elem*2).toString)
 
-  println(list2OfIntegers.filter(new MyPredicate[Int] {
-    override def test(elem: Int): Boolean = (elem%2==0)
-  }).toString)
+  println(list2OfIntegers.filter(elem=>elem%2==0).toString)
 
-  println(list2OfIntegers.flapMap(new MyTransformer[Int, MyList3[Int]] {
-    override def transform (elem: Int): MyList3[Int] = new Cons[Int](elem, new Cons[Int](elem+1, Empty))
-  }).toString)
+  println(list2OfIntegers.flapMap(elem => new Cons(elem, new Cons(elem+1, Empty))).toString)
 
   println(list2OfIntegers == cloneList2OfIntegers)
 
